@@ -3,9 +3,7 @@
   "name": "NewTab_by_Cat",
   "version": "1.0",
   "description": "A simple cat themed tab page.",
-  "permissions": [
-    "storage"
-  ],
+  "permissions": [],
   "chrome_url_overrides": {
     "newtab": "pages/home.html"
   },
