@@ -6,46 +6,34 @@
 <html lang="en">
 
 <head>
-    <title>NewTab_by_Cat</title>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="../scripts/script.js"></script>
-    <style>
-        body {
-            background-image: url('../images/2023-01-11_cat_sleeping_on_window.jpg');
-            height: 100vh;
-            background-size: cover;
-            background-position: center;
-            padding: 0;
-            margin: 0;
-            backdrop-filter: blur(10px);
-
-            font-size: larger;
-        }
-
-        main {
-            padding: 2em;
-            font-family: sans-serif;
-        }
-
-        #h1 {
-            text-align: center;
-            color: white;
-            background-color: #0088aa;
-            border-radius: 0.5em;
-            padding: 0.5em;
-            width: fit-content;
-            margin-left: auto;
-            margin-right: auto;
-        }
-    </style>
+	<title>NewTab_by_Cat</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../styles/styles.css">
+	<script src="../scripts/script.js"></script>
 </head>
 
 <body>
-    <main>
-        <h1 id="h1">Good Morning! =^^=</h1>
-    </main>
+	<main>
+		<h1 id="h1">Good Morning<span id="user"></span>! <span id="clock">HH:MM</span></h1>
+
+		<!-- Popup modal -->
+		<div id="settings-popup" class="hidden">
+			<div id="settings-header">
+				Settings Menu
+				<button id="close-btn"><img src="../images/close-icon.svg" alt="X"></button>
+			</div>
+			<input type="text" name="user" id="user-inp" placeholder="Name" autocomplete="off">
+			<div id="settings-btns">
+				<button id="reset-btn" class="btn">Reset</button>
+				<button id="save-btn" class="btn">Save</button>
+			</div>
+		</div>
+	</main>
+
+	<!-- Settings Button -->
+	<img id="settings-btn" src="../images/settings-icon.svg" alt="Settings Icon">
 </body>
 
 </html>
