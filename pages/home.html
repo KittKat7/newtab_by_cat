@@ -10,8 +10,9 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="../styles/styles.css">
-	<script src="../scripts/script.js"></script>
+	<link rel="stylesheet" href="../styles/home.css">
+	<script src="../scripts/settings.js"></script>
+	<script defer src="../scripts/home.js"></script>
 </head>
 
 <body>
@@ -24,7 +25,15 @@
 				Settings Menu
 				<button id="close-btn"><img src="../images/close-icon.svg" alt="X"></button>
 			</div>
-			<input type="text" name="user" id="user-inp" placeholder="Name" autocomplete="off">
+			<div>
+				<label id="user-inp-lbl" for="user">Username</label>
+				<input type="text" name="user" id="user-inp" placeholder="Name" autocomplete="off">
+			</div>
+			<div>
+				<label id="egg-inp-lbl" for="egg" class="hidden">Easter Egg</label>
+				<input type="checkbox" name="egg" id="egg-inp" class="hidden">
+				<sub id="egg-inp-note">Did you find the easter egg?</sub>
+			</div>
 			<div id="settings-btns">
 				<button id="reset-btn" class="btn">Reset</button>
 				<button id="save-btn" class="btn">Save</button>

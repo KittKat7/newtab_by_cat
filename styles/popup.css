@@ -1,0 +1,18 @@
+body {
+	margin: 0;
+	/* padding: 0.25em 0.5em; */
+}
+
+#kat {
+	user-select: none;
+}
+
+.tra {
+	background-image: linear-gradient(to right,
+			aqua 0%, aqua 20%,
+			pink 20%, pink 40%,
+			white 40%, white 60%,
+			pink 60%, pink 80%,
+			aqua 80%, aqua 100%);
+	color: black;
+}
