@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "NewTab_by_Cat",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "A simple cat themed tab page.",
   "permissions": [],
   "chrome_url_overrides": {
@@ -10,15 +10,15 @@
   "action": {
     "default_popup": "pages/popup.html",
     "default_icon": {
-      "16": "images/icon16.png",
-      "48": "images/icon48.png",
-      "128": "images/icon128.png"
+      "16": "images/newtab_by_cat16x16.png",
+      "48": "images/newtab_by_cat48x48.png",
+      "128": "images/newtab_by_cat128x128.png"
     }
   },
   "icons": {
-    "16": "images/icon16.png",
-    "48": "images/icon48.png",
-    "128": "images/icon128.png"
+    "16": "images/newtab_by_cat16x16.png",
+    "48": "images/newtab_by_cat48x48.png",
+    "128": "images/newtab_by_cat128x128.png"
   },
   "browser_specific_settings": {
     "gecko": {
