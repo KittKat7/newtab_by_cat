@@ -101,6 +101,10 @@ main {
 	color: white;
 }
 
+.btn:active {
+	background-color: var(--accent);
+}
+
 input[type="text"] {
 	padding: 0.25em;
 	border-radius: 0.5em;
@@ -115,4 +119,20 @@ input[type="text"]::placeholder {
 
 input[type="text"]:focus {
 	outline: none;
+}
+
+#search-container {
+	background: var(--primary);
+	position: absolute;
+	padding: 0.25em;
+	border-radius: 1em;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#search-container form * {
+	font-size: 115%;
+	display: inline;
+	border-color: var(--primary);
 }

@@ -15,6 +15,11 @@
 	// Run functions
 	updateTime();
 	loadSettings();
+
+	const searchBox = document.getElementById("ddg-search");
+	if (searchBox) searchBox.focus();
+
+	specialDates();
 })();
 
 /**
@@ -100,4 +105,15 @@ function toggleSettingsPopup() {
 		popup.classList.remove("hidden")
 	else
 		popup.classList.add("hidden")
+}
+
+
+function specialDates() {
+	const today = new Date();
+	// Is halloween
+	if (today.getMonth() === 9 && today.getDate() === 31) {
+		const style = document.createElement("style");
+		style.innerText = `:root { --primary: #fd7708; --accent: #FF9A00; }`;
+		document.head.appendChild(style);
+	}
 }
