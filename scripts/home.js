@@ -16,8 +16,12 @@
 	updateTime();
 	loadSettings();
 
-	const searchBox = document.getElementById("ddg-search");
-	if (searchBox) searchBox.focus();
+	const searchForm = document.getElementById("search");
+	if (searchForm) {
+		searchForm.parentElement.classList.remove("hidden");
+		searchForm.addEventListener("submit", search);
+		searchForm.focus();
+	}
 
 	specialDates();
 })();
@@ -131,3 +135,40 @@ function specialDates() {
 		document.head.appendChild(style);
 	}
 }
+
+function search(event) {
+	event.preventDefault();
+
+	const browserType = detectBrowser();
+	const q = event.target.searchq.value;
+
+	if (typeof chrome !== 'undefined'
+		&& typeof chrome.search !== 'undefined'
+	) {
+		chrome.search.query({ text: q }, function () {
+			if (chrome.runtime.lastError) {
+				console.error("Search error: ", chrome.runtime.lastError);
+			}
+		});
+	} else if (typeof browser !== 'undefined'
+		&& typeof browser.search !== 'undefined'
+	) {
+		browser.search.query({ text: q }, function () {
+			if (browser.runtime.lastError) {
+				console.error("Search error: ", browser.runtime.lastError);
+			}
+		});
+	} else {
+		// Encode the query to ensure proper URL formatting
+		const encodedQuery = encodeURIComponent(q);
+
+		// Construct the DuckDuckGo search URL
+		const url = `https://duckduckgo.com/?q=${encodedQuery}`;
+
+		// Redirect the current tab to the search URL
+		window.location.href = url;
+	}
+
+	// TODO Add fallback for not extension
+}
+

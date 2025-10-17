@@ -39,7 +39,6 @@ function initSettings() {
  * Reads the settings saved in local storage
  */
 function readSettings() {
-	console.log('a');
 	let settingsStr = localStorage.getItem("settings");
 	settings = settingsStr === null ? defaultSettings() : JSON.parse(settingsStr);
 }
@@ -98,4 +97,20 @@ function setSettings(map) {
 		settings[k] = map[k];
 	});
 	writeSettings();
+}
+
+/**
+ * 
+ * @returns "chrome" | "firefox" | undefined
+ */
+function detectBrowser() {
+	const userAgent = navigator.userAgent;
+
+	if (userAgent.includes("Chrome")) {
+		return "chrome";
+	} else if (userAgent.includes("Firefox")) {
+		return "firefox"
+	} else {
+		return undefined;
+	}
 }

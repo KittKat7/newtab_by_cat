@@ -21,10 +21,10 @@
 		<h1 id="h1"><span id="greeting">Good Morning</span><span id="user"></span>! <span id="clock">HH:MM</span></h1>
 
 		<!-- Search container -->
-		<div id="search-container">
-			<form action="https://duckduckgo.com/" method="get" autocomplete="off">
-				<input id="ddg-search" type="text" name="q" placeholder="Search with duckduckgo">
-				<input id="ddg-search-btn" type="submit" value="Search" class="btn">
+		<div id="search-container" class="hidden">
+			<form id="search" autocomplete="off">
+				<input id="search-txt" name="searchq" type="text" name="q" placeholder="Search the web" required>
+				<input id="search-btn" type="submit" value="Search" class="btn">
 			</form>
 		</div>
 
