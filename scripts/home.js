@@ -70,15 +70,29 @@ function updateTime() {
 	const clock = document.getElementById("clock");
 
 	// Get the time variables
-	let hours = String(time.getHours()).padStart(2, "0");
+	let hours = time.getHours();
+	let hoursStr = String(hours).padStart(2, "0");
 	let minutes = String(time.getMinutes()).padStart(2, "0");
 
 	// Update the displayed time
-	clock.textContent = hours + ":" + minutes;
+	clock.textContent = hoursStr + ":" + minutes;
 
 	// Set a callback for 5 seconds
 	setTimeout(updateTime, (60 - time.getSeconds()) * 1000);
+
+	let timeGreeting = "Hello";
+	if (_isMorning(hours)) timeGreeting = "Good morning";
+	else if (_isAfternoon(hours)) timeGreeting = "Good afternoon";
+	else if (_isEvening(hours)) timeGreeting = "Good evening";
+	else if (_isNight(hours)) timeGreeting = "Good night";
+
+	document.getElementById("greeting").innerText = timeGreeting;
 }
+
+function _isMorning(hours) { return hours >= 6 && hours < 12; }
+function _isAfternoon(hours) { return hours >= 12 && hours < 17; }
+function _isEvening(hours) { return hours >= 17 && hours < 19; }
+function _isNight(hours) { return hours >= 19 || (hours <= 0 && hours > 6); }
 
 /**
  * Toggles the settings menu
