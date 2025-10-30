@@ -13,6 +13,8 @@ let settings = {};
  */
 const DEFAULT_SETTNGS = {
 	"name": null,
+	"greeting": "dynamic",
+	"popupEgg": undefined,
 }
 
 /**

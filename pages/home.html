@@ -11,6 +11,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="../styles/home.css">
+	<script src="../scripts/helpers.js"></script>
 	<script src="../scripts/settings.js"></script>
 	<script defer src="../scripts/home.js"></script>
 </head>
@@ -18,10 +19,13 @@
 <body>
 	<main>
 		<!-- Greeting message -->
-		<h1 id="h1"><span id="greeting">Good Morning</span><span id="name"></span>! <span id="clock">HH:MM</span></h1>
+		<div class="frosted">
+			<h1 id="h1"><span id="greeting">Greetings</span><span id="name"></span>! <span id="clock">HH:MM</span>
+			</h1>
+		</div>
 
 		<!-- Search container -->
-		<div id="search-container" class="hidden">
+		<div id="search-container" class="hidden frosted">
 			<form id="search" autocomplete="off">
 				<input id="search-txt" name="searchq" type="text" name="q" placeholder="Search the web" required>
 				<input id="search-btn" type="submit" value="Search" class="btn">
@@ -29,24 +33,31 @@
 		</div>
 
 		<!-- Popup modal -->
-		<div id="settings-popup" class="hidden">
-			<div id="settings-header">
-				Settings Menu
-				<button id="close-btn"><img src="../images/close-icon.svg" alt="X"></button>
-			</div>
-			<div>
-				<label id="name-inp-lbl" for="name">Username</label>
-				<input type="text" name="name" id="name-inp" placeholder="Name" autocomplete="off">
-			</div>
-			<div>
-				<label id="popup-egg-inp-lbl" for="popup-egg" class="hidden">Popup Easter Egg</label>
-				<input type="checkbox" name="popup-egg" id="popup-egg-inp" class="hidden">
-				<sub id="popup-egg-inp-note">Did you find the easter egg?</sub>
-			</div>
-			<div id="settings-btns">
-				<button id="reset-btn" class="btn">Reset</button>
-				<button id="save-btn" class="btn">Save</button>
-			</div>
+		<div id="settings-popup" class="frosted hidden">
+			<form id="settings-form" autocomplete="off">
+				<div id="settings-header">
+					<strong>Settings Menu</strong>
+					<button id="close-btn" type="button"><img src="../images/close-icon.svg" alt="X"></button>
+				</div>
+				<div>
+					<label id="name-inp-lbl" for="name">Name</label>
+					<input type="text" name="name" id="name-inp" placeholder="Name" autocomplete="off">
+				</div>
+				<div>
+					<label id="greeting-inp-lbl" for="name">Greeting</label>
+					<input type="text" name="greeting" id="greeting-inp" placeholder="Greeting" autocomplete="off">
+					<button id="greeting-inp-reset" type="button" class="btn">Reset</button>
+				</div>
+				<div>
+					<label id="popup-egg-inp-lbl" for="popup-egg" class="hidden">Popup Easter Egg</label>
+					<input type="checkbox" name="popup-egg" id="popup-egg-inp" class="hidden">
+					<sub id="popup-egg-inp-note">Did you find the easter egg?</sub>
+				</div>
+				<div id="settings-btns">
+					<button id="reset-btn" type="button" class="btn">Reset</button>
+					<button id="save-btn" type="submit" class="btn">Save</button>
+				</div>
+			</form>
 		</div>
 	</main>
 

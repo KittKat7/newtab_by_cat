@@ -11,8 +11,7 @@ body {
 	padding: 0;
 	margin: 0;
 	backdrop-filter: blur(10px);
-
-	font-size: larger;
+	font-size: 125%;
 }
 
 main {
@@ -20,10 +19,30 @@ main {
 	font-family: sans-serif;
 }
 
+form * {
+	font-size: 1em;
+}
+
+.frosted>* {
+	background-color: color-mix(in srgb, var(--primary) 50%, transparent);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	border-radius: 20px;
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	box-shadow:
+		0 8px 32px rgba(0, 0, 0, 0.1),
+		inset 0 1px 0 rgba(255, 255, 255, 0.5),
+		inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+		inset 0 0 0px 0px rgba(255, 255, 255, 0);
+	position: relative;
+	overflow: hidden;
+	padding: 1em;
+
+}
+
 #h1 {
 	text-align: center;
 	color: white;
-	background-color: var(--primary);
 	border-radius: 0.5em;
 	padding: 0.5em;
 	width: fit-content;
@@ -36,11 +55,10 @@ main {
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);
-	background-color: var(--primary);
 	padding: 1em;
 	border-radius: 1em;
 	color: white;
-	font-weight: bold;
+	white-space: nowrap;
 }
 
 #settings-btn {
@@ -97,7 +115,7 @@ main {
 	border-radius: 0.5em;
 	padding: 0.25em;
 	background-color: var(--primary);
-	border: 0.25em solid var(--accent);
+	border: 0.15em solid var(--accent);
 	color: white;
 }
 
@@ -110,7 +128,7 @@ input[type="text"] {
 	border-radius: 0.5em;
 	background-color: dimgray;
 	color: white;
-	border: 0.25em solid var(--accent);
+	border: 0.15em solid var(--accent);
 }
 
 input[type="text"]::placeholder {
@@ -122,17 +140,19 @@ input[type="text"]:focus {
 }
 
 #search-container {
-	background: var(--primary);
 	position: absolute;
-	padding: 0.25em;
 	border-radius: 1em;
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);
 }
 
-#search-container form * {
-	font-size: 115%;
+#search-container * {
+	white-space: nowrap;
 	display: inline;
 	border-color: var(--primary);
+}
+
+#search-container form {
+	padding: 1em;
 }

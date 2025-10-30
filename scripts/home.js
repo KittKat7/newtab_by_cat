@@ -11,9 +11,12 @@
 	document.getElementById("settings-btn").addEventListener("click", toggleSettingsPopup);
 	document.getElementById("close-btn").addEventListener("click", toggleSettingsPopup);
 	document.getElementById("reset-btn").addEventListener("click", resetSettings);
-	document.getElementById("save-btn").addEventListener("click", saveSettings);
+	qs("#greeting-inp-reset").addEventListener("click", () => {
+		qs("#greeting-inp").value = "dynamic";
+		saveSettings();
+	});
+	qs("#settings-form").addEventListener("submit", saveSettings);
 	// Run functions
-	updateTime();
 	loadSettings();
 
 	const searchForm = document.getElementById("search");
@@ -32,26 +35,32 @@
  */
 function loadSettings() {
 	const settings = getAllSettings();
-	console.log(settings);
 
 	document.getElementById("name").textContent = settings["name"] ? ` ${settings["name"]}` : "";
 	document.getElementById("name-inp").value = settings["name"] ?? "";
 
+	qs("#greeting").textContent = settings["greeting"] ? ` ${settings["greeting"]}` : "";
+	qs("#greeting-inp").value = settings["greeting"] ?? "";
+
 	if (settings.popupEgg != undefined)
 		document.getElementById("popup-egg-inp").checked = settings.popupEgg;
+	updateTime();
 }
 
 /**
  * Saves the settings from the settings inputs to localStorage and the loads the
  * settings to apply them
  */
-function saveSettings() {
+function saveSettings(e) {
+	if (e) e.preventDefault();
+
 	const settings = {
 		"name": document.getElementById("name-inp").value.substring(0, 25),
+		"greeting": qs("#greeting-inp").value.substring(0, 25),
 	}
 
 	if (getSetting("popupEgg") !== undefined) {
-		settings.popupEgg = document.querySelector("#popup-egg-inp").checked;
+		settings.popupEgg = qs("#popup-egg-inp").checked;
 	}
 
 	setSettings(settings);
@@ -85,13 +94,20 @@ function updateTime() {
 	// Set a callback for 5 seconds
 	setTimeout(updateTime, (60 - time.getSeconds()) * 1000);
 
-	let timeGreeting = "Hello";
-	if (_isMorning(hours)) timeGreeting = "Good morning";
-	else if (_isAfternoon(hours)) timeGreeting = "Good afternoon";
-	else if (_isEvening(hours)) timeGreeting = "Good evening";
-	else if (_isNight(hours)) timeGreeting = "Good night";
+	let greeting = getSetting("greeting");
 
-	document.getElementById("greeting").innerText = timeGreeting;
+	if (greeting === "dynamic") {
+		if (_isMorning(hours)) greeting = "Good morning";
+		else if (_isAfternoon(hours)) greeting = "Good afternoon";
+		else if (_isEvening(hours)) greeting = "Good evening";
+		else if (_isNight(hours)) greeting = "Good night";
+	}
+
+	if (getSetting("greeting") !== "dynamic") {
+		greeting = getSetting("greeting");
+	}
+
+	qs("#greeting").innerText = greeting;
 }
 
 function _isMorning(hours) { return hours >= 6 && hours < 12; }
@@ -102,28 +118,32 @@ function _isNight(hours) { return hours >= 19 || (hours <= 0 && hours > 6); }
 /**
  * Toggles the settings menu
  */
-function toggleSettingsPopup() {
+function toggleSettingsPopup(e) {
 	const popup = document.getElementById("settings-popup");
 
 	// Easter egg
-	const eggInp = document.querySelector("#popup-egg-inp");
-	const eggInpLabel = document.querySelector("#popup-egg-inp-lbl");
-	const eggInpNote = document.querySelector("#popup-egg-inp-note");
+	const popupEggInp = document.querySelector("#popup-egg-inp");
+	const popupEggInpLabel = document.querySelector("#popup-egg-inp-lbl");
+	const popupEggInpNote = document.querySelector("#popup-egg-inp-note");
 	if (getSetting("popupEgg") !== undefined) {
-		eggInp.classList.remove("hidden");
-		eggInpLabel.classList.remove("hidden");
-		eggInpNote.classList.add("hidden");
+		popupEggInp.classList.remove("hidden");
+		popupEggInpLabel.classList.remove("hidden");
+		popupEggInpNote.classList.add("hidden");
 	} else {
-		eggInp.classList.add("hidden");
-		eggInpLabel.classList.add("hidden");
-		eggInpNote.classList.remove("hidden");
+		popupEggInp.classList.add("hidden");
+		popupEggInpLabel.classList.add("hidden");
+		popupEggInpNote.classList.remove("hidden");
 	}
 
 	// Toggle hidden class
-	if (popup.classList.contains("hidden"))
-		popup.classList.remove("hidden")
-	else
-		popup.classList.add("hidden")
+	if (popup.classList.contains("hidden")) {
+		popup.classList.remove("hidden");
+		qs("#search-container").classList.add("hidden");
+	}
+	else {
+		popup.classList.add("hidden");
+		qs("#search-container").classList.remove("hidden");
+	}
 }
 
 
