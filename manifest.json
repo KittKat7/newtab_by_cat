@@ -12,15 +12,15 @@
   "action": {
     "default_popup": "pages/popup.html",
     "default_icon": {
-      "16": "images/icon16.png",
-      "48": "images/icon48.png",
-      "128": "images/icon128.png"
+      "16": "images/NewTab_by_Cat-16.png",
+      "48": "images/NewTab_by_Cat-48.png",
+      "128": "images/NewTab_by_Cat-128.png"
     }
   },
   "icons": {
-    "16": "images/icon16.png",
-    "48": "images/icon48.png",
-    "128": "images/icon128.png"
+    "16": "images/NewTab_by_Cat-16.png",
+    "48": "images/NewTab_by_Cat-48.png",
+    "128": "images/NewTab_by_Cat-128.png"
   },
   "browser_specific_settings": {
     "gecko": {

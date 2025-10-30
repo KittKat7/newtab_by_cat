@@ -90,7 +90,7 @@ main {
 }
 
 .hidden {
-	visibility: hidden;
+	display: none;
 }
 
 .btn {

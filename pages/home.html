@@ -18,7 +18,7 @@
 <body>
 	<main>
 		<!-- Greeting message -->
-		<h1 id="h1"><span id="greeting">Good Morning</span><span id="user"></span>! <span id="clock">HH:MM</span></h1>
+		<h1 id="h1"><span id="greeting">Good Morning</span><span id="name"></span>! <span id="clock">HH:MM</span></h1>
 
 		<!-- Search container -->
 		<div id="search-container" class="hidden">
@@ -35,13 +35,13 @@
 				<button id="close-btn"><img src="../images/close-icon.svg" alt="X"></button>
 			</div>
 			<div>
-				<label id="user-inp-lbl" for="user">Username</label>
-				<input type="text" name="user" id="user-inp" placeholder="Name" autocomplete="off">
+				<label id="name-inp-lbl" for="name">Username</label>
+				<input type="text" name="name" id="name-inp" placeholder="Name" autocomplete="off">
 			</div>
 			<div>
-				<label id="egg-inp-lbl" for="egg" class="hidden">Easter Egg</label>
-				<input type="checkbox" name="egg" id="egg-inp" class="hidden">
-				<sub id="egg-inp-note">Did you find the easter egg?</sub>
+				<label id="popup-egg-inp-lbl" for="popup-egg" class="hidden">Popup Easter Egg</label>
+				<input type="checkbox" name="popup-egg" id="popup-egg-inp" class="hidden">
+				<sub id="popup-egg-inp-note">Did you find the easter egg?</sub>
 			</div>
 			<div id="settings-btns">
 				<button id="reset-btn" class="btn">Reset</button>

@@ -9,11 +9,10 @@ let settings = {};
 /**
  * The default settings  
  * `user`: String or null  
- * `egg`: null, "found", "active"  
+ * `popupEgg`: null, true, false  
  */
 const DEFAULT_SETTNGS = {
-	"user": null,
-	"egg": null,
+	"name": null,
 }
 
 /**
@@ -63,9 +62,6 @@ function clearSettings() {
  */
 function getSetting(key) {
 	initSettings();
-	if (!settings.hasOwnProperty(key)) {
-		return undefined;
-	}
 	return settings[key];
 }
 

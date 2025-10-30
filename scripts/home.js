@@ -34,10 +34,11 @@ function loadSettings() {
 	const settings = getAllSettings();
 	console.log(settings);
 
-	document.getElementById("user").textContent = settings["user"] ? ` ${settings["user"]}` : "";
-	document.getElementById("user-inp").value = settings["user"] ?? "";
+	document.getElementById("name").textContent = settings["name"] ? ` ${settings["name"]}` : "";
+	document.getElementById("name-inp").value = settings["name"] ?? "";
 
-	document.getElementById("egg-inp").checked = settings["egg"] === "active" ? true : false;
+	if (settings.popupEgg != undefined)
+		document.getElementById("popup-egg-inp").checked = settings.popupEgg;
 }
 
 /**
@@ -46,11 +47,11 @@ function loadSettings() {
  */
 function saveSettings() {
 	const settings = {
-		"user": document.getElementById("user-inp").value,
+		"name": document.getElementById("name-inp").value.substring(0, 25),
 	}
 
-	if (getSetting("egg") !== null) {
-		settings["egg"] = document.querySelector("#egg-inp").checked ? "active" : "found";
+	if (getSetting("popupEgg") !== undefined) {
+		settings.popupEgg = document.querySelector("#popup-egg-inp").checked;
 	}
 
 	setSettings(settings);
@@ -105,10 +106,10 @@ function toggleSettingsPopup() {
 	const popup = document.getElementById("settings-popup");
 
 	// Easter egg
-	const eggInp = document.querySelector("#egg-inp");
-	const eggInpLabel = document.querySelector("#egg-inp-lbl");
-	const eggInpNote = document.querySelector("#egg-inp-note");
-	if (getSetting("egg") !== null) {
+	const eggInp = document.querySelector("#popup-egg-inp");
+	const eggInpLabel = document.querySelector("#popup-egg-inp-lbl");
+	const eggInpNote = document.querySelector("#popup-egg-inp-note");
+	if (getSetting("popupEgg") !== undefined) {
 		eggInp.classList.remove("hidden");
 		eggInpLabel.classList.remove("hidden");
 		eggInpNote.classList.add("hidden");
