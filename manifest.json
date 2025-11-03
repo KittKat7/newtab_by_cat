@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "NewTab_by_Cat",
+  "name": "NewTabbyCat",
   "version": "1.5.0",
   "description": "A simple cat themed tab page.",
   "permissions": [
@@ -12,19 +12,19 @@
   "action": {
     "default_popup": "pages/popup.html",
     "default_icon": {
-      "16": "images/NewTab_by_Cat-16.png",
-      "48": "images/NewTab_by_Cat-48.png",
-      "128": "images/NewTab_by_Cat-128.png"
+      "16": "images/NewTabbyCat-16.png",
+      "48": "images/NewTabbyCat-48.png",
+      "128": "images/NewTabbyCat-128.png"
     }
   },
   "icons": {
-    "16": "images/NewTab_by_Cat-16.png",
-    "48": "images/NewTab_by_Cat-48.png",
-    "128": "images/NewTab_by_Cat-128.png"
+    "16": "images/NewTabbyCat-16.png",
+    "48": "images/NewTabbyCat-48.png",
+    "128": "images/NewTabbyCat-128.png"
   },
   "browser_specific_settings": {
     "gecko": {
-      "id": "@newtab_by_cat.kittkat"
+      "id": "@newtabbycat.kittkat"
     }
   }
 }
