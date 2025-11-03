@@ -42,6 +42,11 @@ function initSettings() {
 function readSettings() {
 	let settingsStr = localStorage.getItem("settings");
 	settings = settingsStr === null ? defaultSettings() : JSON.parse(settingsStr);
+	Object.keys(DEFAULT_SETTNGS).forEach(k => {
+		if (settings[k] === undefined) {
+			settings[k] = DEFAULT_SETTNGS[k];
+		}
+	});
 }
 
 /**
