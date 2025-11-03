@@ -86,8 +86,12 @@ form * {
 	vertical-align: middle;
 }
 
-#close-btn:active {
+#close-btn:hover {
 	background-color: crimson;
+}
+
+#close-btn:active {
+	background-color: darkred;
 }
 
 #settings-btns {
@@ -118,8 +122,13 @@ form * {
 	color: white;
 }
 
-.btn:active {
+.btn:hover {
 	background-color: var(--accent);
+}
+
+.btn:active {
+	border-color: var(--primary);
+	background-color: var(--primary);
 }
 
 input[type="text"] {
@@ -138,18 +147,37 @@ input[type="text"]:focus {
 	outline: none;
 }
 
+
+input[type="checkbox"] {
+	appearance: none;
+	width: 1em;
+	height: 1em;
+	background: white;
+	vertical-align: middle;
+	position: relative;
+	border-radius: 0.2em;
+
+	&::before {
+		content: "";
+		inset: 0.1em;
+		transform: scale(0);
+		transition: 50ms transform ease-in-out;
+		position: absolute;
+		background-color: var(--accent);
+		border-radius: 0.2em;
+	}
+
+	&:checked::before {
+		transform: scale(1);
+	}
+}
+
 #search-container {
 	position: absolute;
 	border-radius: 1em;
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);
-}
-
-#search-container * {
-	white-space: nowrap;
-	display: inline;
-	border-color: var(--primary);
 }
 
 #search-container form {

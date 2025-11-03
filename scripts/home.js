@@ -42,6 +42,8 @@ function loadSettings() {
 	qs("#greeting").textContent = settings["greeting"] ? ` ${settings["greeting"]}` : "";
 	qs("#greeting-inp").value = settings["greeting"] ?? "";
 
+	qs("#use24Hour-inp").checked = settings.use24Hour;
+
 	if (settings.popupEgg != undefined)
 		document.getElementById("popup-egg-inp").checked = settings.popupEgg;
 	updateTime();
@@ -57,6 +59,7 @@ function saveSettings(e) {
 	const settings = {
 		"name": document.getElementById("name-inp").value.substring(0, 25),
 		"greeting": qs("#greeting-inp").value.substring(0, 25),
+		"use24Hour": qs("#use24Hour-inp").checked,
 	}
 
 	if (getSetting("popupEgg") !== undefined) {
@@ -78,18 +81,26 @@ function resetSettings() {
 /**
  * Updates the time displayed on the clock on the new tab page.
  */
-function updateTime() {
+function updateTime(debugTime) {
 	// Get the time and clock element variables
-	const time = new Date();
+	const time = debugTime ? new Date(debugTime) : new Date();
 	const clock = document.getElementById("clock");
 
 	// Get the time variables
 	let hours = time.getHours();
-	let hoursStr = String(hours).padStart(2, "0");
+	let hours12 = hours % 12 === 0 ? 12 : hours % 12;
+	let hoursStr = getSetting("use24Hour")
+		? String(hours).padStart(2, "0")
+		: String(hours12);
 	let minutes = String(time.getMinutes()).padStart(2, "0");
 
 	// Update the displayed time
-	clock.textContent = hoursStr + ":" + minutes;
+	let timeText = hoursStr + ":" + minutes
+	if (!getSetting("use24Hour")) {
+		if (hours < 12) timeText += " am";
+		else timeText += " pm";
+	}
+	clock.textContent = timeText;
 
 	// Set a callback for 5 seconds
 	setTimeout(updateTime, (60 - time.getSeconds()) * 1000);

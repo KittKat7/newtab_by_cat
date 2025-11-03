@@ -14,6 +14,7 @@ let settings = {};
 const DEFAULT_SETTNGS = {
 	"name": null,
 	"greeting": "dynamic",
+	"use24Hour": true,
 	"popupEgg": undefined,
 }
 
